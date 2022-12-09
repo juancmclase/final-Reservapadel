@@ -1,0 +1,25 @@
+.sidebar-nav {
+    margin-top: 20px;
+    padding: 0;
+    list-style: none;
+    font-style: oblique;
+    font-family: 'Lucida Sans';
+    background-color:lightskyblue;
+    text-align: center;
+}
+ .sidebar-nav a{
+    color:black;
+}
+body{
+    font-family: monospace;
+    background-color:lightgrey;
+    
+}
+
+a {
+    text-decoration: none;
+    color:black;
+}
+h1{
+    background-color: lightskyblue;
+}

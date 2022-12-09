@@ -1,0 +1,37 @@
+<style>
+    h1{
+      text-align: center;
+      background-color: lightblue;
+    }
+    p{
+      
+      text-align: center;
+      
+    }
+   
+    h2{
+      background-color: lightgray;
+      text-align: center;
+    }
+  a{
+      text-align: center;
+      display: inline-block;
+      width: 100%;
+  }
+  </style>
+  {% extends "base_generic.html" %}
+  
+  {% block content %}
+  <h1>ReservaPadel</h1>
+  
+    
+  
+  <h2>Pistas no disponibles</h2>
+  
+  <p>Lo sentimos en estos momentos la pista elegida no esta disponible</p>
+  <p>Intentelo de nuevo con otra hora, con otro dia o con otra pista</p>
+  <p>Muchas Gracias!!!!!</p>
+
+  <a href="{% url 'reservas' %}">Volver a Reservas</a>
+  
+  {% endblock %}

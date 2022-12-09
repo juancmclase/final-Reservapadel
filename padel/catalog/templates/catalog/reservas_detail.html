@@ -1,0 +1,25 @@
+<style>
+  h1{
+      text-align: center;
+      background-color: lightblue;
+    }
+   
+    h2{
+      text-align: center;
+      background-color: lightgray;
+    }
+</style>
+
+{% extends "base_generic.html" %}
+
+{% block content %}
+<h1>ReservaPadel</h1>
+<h2>Reserva</h2>
+<p><strong>NombreReserva:</strong> {{ reservas.nombre}}</p>
+  <p><strong>Usuario Reserva:</strong> {{ reservas.user}}</p> 
+  <p><strong>Pista:</strong> {{ reservas.pista }}</p>
+  <p><strong>Fecha:</strong> {{reservas.fecha}}</p>
+  <p><strong>Hora:</strong> {{reservas.hora}}</p>
+  
+{% endblock %}
+

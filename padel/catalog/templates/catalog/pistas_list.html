@@ -1,0 +1,45 @@
+<style>
+    h1{
+      text-align: center;
+      background-color: lightblue;
+    }
+    p{
+      text-decoration: lightblue;
+      text-align: center;
+    }
+    h2{
+      text-align: center;
+      background-color: lightgray;
+    }
+</style>
+{% extends "base_generic.html" %}
+
+{% block content %}
+<h1>ReservaPadel</h1>
+<h2>Lista de Pistas de Padel</h2>
+<hr>
+<form action="?" method="GET">
+<input type="text" name="nombre" id="" value="{{request.GET.nombre}}" autocomplete="off" placeholder="Nombre del club">
+<input type="submit" class="btn btn-primary" value="Buscar" />
+<a href="{% url 'pistalista' %}" class="btn btn-secondary">Todas las pistas</a>
+</form>
+<hr>
+ 
+{% if pistas_list %}
+    <ul class="list-group" >
+
+      {% for pista in pistas_list %}
+      <li class="list-group-item list-group-item-secondary">
+        <a href="{{ pista.get_absolute_url }}">Club: {{pista.club}} Nombre: {{ pista.nombre }} Numero: {{pista.numero}} Codigo: {{pista.codigo}} </a> 
+      </li>
+      <br>
+      {% endfor %}
+
+    </ul>
+    {% else %}
+      <p>No hay pistas.</p>
+    {% endif %} 
+
+
+
+{% endblock %}

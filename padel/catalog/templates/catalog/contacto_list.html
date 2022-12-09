@@ -1,0 +1,40 @@
+<style>
+    h1{
+      text-align: center;
+      background-color: lightblue;
+    }
+    p{
+      text-decoration: lightblue;
+      text-align: center;
+    }
+    h2{
+      text-align: center;
+      background-color: lightgray;
+    }
+    
+</style>
+{% extends "base_generic.html" %}
+
+{% block content %}
+<h1>ReservaPadel</h1>
+<h2>Lista de Contactos </h2>
+ 
+{% if contacto_list %}
+    <ul class="list-group ">
+
+      {% for contacto in contacto_list %}
+      <li class="list-group-item list-group-item-secondary">
+        <a href="{{ contacto.get_absolute_url }}">Nombre:{{ contacto.nombre }} Correo:{{contacto.correo}} Tipo Consulta:{{contacto.tipo_consulta}} </a> 
+      </li>
+      <br>
+      {% endfor %}
+
+    </ul>
+    {% else %}
+      <p>No hay Contactos.</p>
+    {% endif %} 
+
+
+
+
+{% endblock %}

@@ -1,0 +1,27 @@
+<style>
+  h1{
+      text-align: center;
+      background-color: lightskyblue;
+    }
+   
+    h2{
+      text-align: center;
+      background-color: lightgray;
+    }
+
+</style>
+
+
+{% extends "base_generic.html" %}
+
+{% block content %}
+<h1>ReservaPadel</h1>
+<h2>Contacto</h2>
+<p><strong>Nombre:</strong> {{ contacto.nombre}}</p>
+<p><strong>Correo electronico:</strong> {{ contacto.correo}}</p> 
+<p><strong>Mensaje:</strong> {{ contacto.mensaje }}</p>
+<p><strong>Tipo de Consulta:</strong> {{ contacto.tipo_consulta }}</p>
+  
+  
+{% endblock %}
+

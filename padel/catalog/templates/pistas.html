@@ -1,0 +1,46 @@
+<style>
+    h1{
+        background-color: lightblue;
+        text-align: center;
+    }
+    h2{
+        background-color: lightgray;
+        text-align: center;
+    }
+    p{
+        text-align: center;
+    }
+   
+</style>
+
+{% extends "base_generic.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<h1>ReservaPadel</h1>
+
+<h2>Añadir una nueva pista de padel!</h2>
+<p>Aqui puedes añadir pista nuevas!!!</p>
+<div class="row">
+    <div class="col-12 col-md-6 offset-md-3">
+        <form action="" class="formulario_pistas id="formulario_pistas" method="post" enctype="multipart/form-data">
+            {% csrf_token%}
+            <br>
+            <table id="tablapistas" class="tablapistas">
+                {{form | crispy}}
+            </table>
+           
+            <div class="d-flex justify-content-end">
+            <input type ="reset" value="Cancelar" class= "btn btn-secondary"/>
+            &nbsp;
+            <input type="submit" class="btn btn-primary" value="Enviar" />
+            </div>
+        </form>
+        
+
+    </div>
+</div>
+
+
+  
+
+{% endblock %}

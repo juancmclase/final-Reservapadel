@@ -1,0 +1,115 @@
+<style>
+    h1{
+      text-align: center;
+      background-color: lightskyblue;
+    }
+    p{
+      text-decoration: lightblue;
+      text-align: center;
+    }
+    h2{
+      text-align: center;
+      background-color: lightgray;
+    }
+    a{
+      text-decoration:none;
+    }
+    
+</style>
+
+  
+</script>
+{% extends "base_generic.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<h1>ReservaPadel</h1>
+<h2> Reservas de Padel</h2>
+ 
+<div class="row">
+    <div class="col-12 col-md-6 offset-md-3">
+      <form method="POST" action="" id="Form1" data-funcion-url="{% url 'load_pista'%}" data-hora-url="{% url 'load_hora'%}">
+        
+        
+        <table id="tablareserva" class="tablareserva" >
+          {% csrf_token%}
+          {{form | crispy }}
+          
+          
+      </table>
+        
+        <div class="d-flex justify-content-end">
+          <br>
+          <input type ="reset" value="Cancelar" class= "btn btn-secondary"/>
+          &nbsp;
+          <input type="submit" class="btn btn-primary" value="Reservar" />
+          
+        </div >
+        <br>
+      
+        <br>
+        <a href="{% url 'index' %}">Inicio</a>
+        
+      </form>
+        {{mensaje}}
+
+    </div>
+  </div>
+
+
+  
+  
+<script>
+  $("#id_club").change(function(){
+    const url1 = $("#Form1").attr("data-funcion-url");
+    const pistaid=$(this).val();
+    $.ajax({
+      url:url1,
+      data: {
+        'id_club': pistaid
+      },
+      success: function(data){
+        
+        let html_data= '<option value="">-----------</option>';
+        console.log(data);
+        
+        data.forEach(function(pista) {
+          html_data += `<option value="${pista.id}">${pista.nombre}</option>`;
+          
+        });
+        
+        $("#id_pista").html(html_data);
+      }
+      
+    });
+   
+  });
+</script>
+<script>
+  $("#id_club").change(function(){
+    const url1 = $("#Form1").attr("data-hora-url");
+    const horaid=$(this).val();
+    $.ajax({
+      url:url1,
+      data: {
+        'id_club': horaid
+      },
+      success: function(data){
+        
+        let html_data= '<option value="">-----------</option>';
+        console.log(data);
+        
+        data.forEach(function(hora) {
+          html_data += `<option value="${hora.id}">${hora.hora}</option>`;
+          
+        });
+        
+        $("#id_hora").html(html_data);
+      }
+      
+    });
+   
+  });
+</script>
+
+
+{% endblock %}

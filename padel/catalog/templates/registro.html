@@ -1,0 +1,42 @@
+<style>
+    h1{
+      text-align: center;
+      background-color: lightblue;
+    }
+    body{
+      align-items: center;
+      text-align: center;
+    }
+    h2{
+      text-align: center;
+      background-color: lightgrey;
+    }
+  </style>
+  {% extends "base_generic.html" %}
+  {% load crispy_forms_tags %}
+  {% block content %}
+  <h1>ReservaPadel</h1>
+  <h2>Registro de Usuario</h2>
+  <div class="row">
+    <div class="col-12 col-md-6 offset-md-3">
+      <form method="post" action="">
+        {% csrf_token %}
+        
+        <table id="tablaregistro" class="tablaregistro">
+          {{form | crispy}}
+      </table>
+        
+        <div class="d-flex justify-content-end">
+          <input type ="reset" value="Cancelar" class= "btn btn-secondary"/>
+          &nbsp;
+          <input type="submit" class="btn btn-primary" value="Resgistrase" />
+          <input type="hidden" name="next" value="{{ next }}" />
+        </div >
+        <a href="{% url 'index' %}">Inicio</a>
+        <a href="{% url 'login' %}">Iniciar Sesión</a>
+        </form>
+
+    </div>
+  </div>
+  
+  {% endblock %}

@@ -1,0 +1,29 @@
+<style>
+    h1{
+      text-align: center;
+      background-color: lightblue;
+    }
+    p{
+      text-decoration: lightblue;
+      text-align: center;
+    }
+    h6{
+      text-align: right;
+    }
+    img{
+      width: 2fr;
+      height: 2fr;
+      align-content: center;
+    }
+</style>
+{% extends "base_generic.html" %}
+
+{% block content %}
+<h1>ReservaPadel</h1>
+<h2>Lista de Pistas de Padel</h2>
+
+{{Pista_lista}}
+
+
+
+{% endblock %}

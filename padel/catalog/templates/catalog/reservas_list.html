@@ -1,0 +1,70 @@
+<style>
+  h1{
+    text-align: center;
+    background-color: lightskyblue;
+  }
+  p{
+    text-decoration: none;
+    text-align: center;
+  }
+  h2{
+    text-align: center;
+    background-color: lightgray;
+  }
+  a{
+    text-decoration: none;
+  }
+  a :hover{
+    text-decoration: underline;
+  }
+    
+</style>
+{% extends "base_generic.html" %}
+
+{% block content %}
+<h1>ReservaPadel</h1>
+<h2>Lista de Reservas de Padel</h2>
+<hr>
+<form action="?" method="GET">
+<input type="date" name="fecha1" id="" value="{{request.GET.fecha1}}" autocomplete="off" placeholder="Dia de reserva">
+<input type="submit" class="btn btn-primary" value="Buscar" />
+<a href="{% url 'reservalista' %}" class="btn btn-secondary">Todas las Reservas</a>
+</form>
+<hr>
+ 
+{% if reservas_list %}
+    <ul class="list-group ">
+
+      {% for reserva in reservas_list %}
+      <li class="list-group-item list-group-item-secondary">
+        <a href="{{ reserva.get_absolute_url }}">Usuario:{{ reserva.user }} Club:{{reserva.club}} Nombre:{{reserva.nombre}} Pista:{{reserva.pista}} </a> 
+        <br>
+      </li>
+      <br>
+      {% endfor %}
+
+    </ul>
+    {% else %}
+      <p>No hay Reservas.</p>
+    {% endif %} 
+
+    {% block pagination %}
+    {% if is_paginated %}
+        <div class="pagination">
+            <span class="page-links">
+                {% if page_obj.has_previous %}
+                    <a href="{{ request.path }}?page={{ page_obj.previous_page_number }}">previous</a>
+                {% endif %}
+                <span class="page-current">
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                </span>
+                {% if page_obj.has_next %}
+                    <a href="{{ request.path }}?page={{ page_obj.next_page_number }}">next</a>
+                {% endif %}
+            </span>
+        </div>
+    {% endif %}
+    {% endblock %} 
+
+
+{% endblock %}

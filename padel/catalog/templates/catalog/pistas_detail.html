@@ -1,0 +1,30 @@
+<style>
+  h1{
+      text-align: center;
+      background-color: lightblue;
+    }
+    
+    h2{
+      text-align: center;
+      background-color: lightgray;
+    }
+
+</style>
+
+
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>ReservaPadel</h1>
+  <h2>Pista</h2>
+  <p><strong>Club:</strong> {{ pistas.club}}</p>
+  <p><strong>Nombre:</strong> {{ pistas.nombre}}</p> 
+  <p><strong>Numero:</strong> {{ pistas.numero }}</p>
+  <p><strong>Codigo:</strong> {{ pistas.codigo }}</p>
+  <strong>Imagen:</strong>
+  <img class="rounded mx-auto d-block img-fluid" src="{{pistas.imagen.url}}">
+  
+  
+  
+{% endblock %}
+
