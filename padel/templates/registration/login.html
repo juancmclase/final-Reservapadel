@@ -1,0 +1,53 @@
+<style>
+  h1{
+    text-align: center;
+    background-color: lightblue;
+  }
+  body{
+    align-items: center;
+    text-align: center;
+    align-content: center;
+  }
+  h2{
+    text-align: center;
+    background-color: lightgrey;
+  }
+  p{
+    text-align: center;
+  }
+</style>
+{% extends "base_generic.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<h1>ReservaPadel</h1>
+<h2>INICIO DE SESION</h2>
+
+{% if next %}
+    {% if user.is_authenticated %}
+    <p>Tu cuenta no tiene acceso a esta pagina. 
+    Por favor inicia sesion con una cuenta con acceso.</p>
+    {% else %}
+    <p>Por favor inicia sesion para ver esta pagina.</p>
+    {% endif %}
+{% endif %}
+<div class="row">
+  <div class="col-12 col-md-6 offset-md-3">
+    <form method="post" action="{% url 'login' %}">
+      {% csrf_token %}
+      
+      {{form | crispy}}
+      
+      <div>
+        <input type="submit" value="Iniciar sesion" />
+        <input type="hidden" name="next" value="{{ next }}" />
+      </div>
+      </form>
+
+  </div>
+</div>
+
+
+{# Assumes you setup the password_reset view in your URLconf #}
+<!--<p><a href="{% url 'password_reset' %}">Contraseña olvidada?</a></p>-->
+
+{% endblock %}
