@@ -57,11 +57,11 @@ def contacto(request):
         if formulario.is_valid():
             formulario.save()
             data["mensaje"]="Formulario enviado con exito!"
-            asunto = 'Una persona quiere contactar con nosotros'
-            mensaje1 ="Nombre: "+formulario.cleaned_data['nombre']+" Correo: "+ formulario.cleaned_data['correo']+" Mensaje: "+ formulario.cleaned_data['mensaje']
-            email_from = settings.EMAIL_HOST_USER
-            recipent_list=["juanjocmclase@gmail.com"]
-            send_mail(asunto,mensaje1,email_from,recipent_list)
+            #asunto = 'Una persona quiere contactar con nosotros'
+            #mensaje1 ="Nombre: "+formulario.cleaned_data['nombre']+" Correo: "+ formulario.cleaned_data['correo']+" Mensaje: "+ formulario.cleaned_data['mensaje']
+            #email_from = settings.EMAIL_HOST_USER
+            #recipent_list=["juanjocmclase@gmail.com"]
+            #send_mail(asunto,mensaje1,email_from,recipent_list)
         else:
             data["form"] = formulario
     return render(request,'contacto.html',data)
